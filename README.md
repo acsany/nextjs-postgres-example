@@ -1,8 +1,8 @@
-# Node.js Dev Container with Next.js
+# Node.js Dev Container with Next.js and Postgres Connection
 
-> This repo is based on the plain Node.js Dev Container
+> This repo is based on the plain Node.js Dev Container with Next.js
 
-This repo is the basis for Next.js projects in a Docker container. Copy this repo when you start a new project and enhance the project from there.
+This repo is the basis for Next.js projects that connect to a Postgres database (using [Drizzle ORM](https://orm.drizzle.team/)) in a Docker container. Copy this repo when you start a new project and enhance the project from there.
 
 ## Prerequisites
 
