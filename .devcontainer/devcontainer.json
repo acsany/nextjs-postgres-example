@@ -5,13 +5,11 @@
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "perragnaredin.september-steel"
-      ],
+      "extensions": ["perragnaredin.september-steel"],
       "settings": {
         "workbench.colorTheme": "September Steel"
-        ]
       }
     }
-  }
+  },
+  "postCreateCommand": "npm install"
 }

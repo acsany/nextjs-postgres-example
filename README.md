@@ -21,6 +21,12 @@ This repo is the basis for Next.js projects in a Docker container. Copy this rep
 
 You can notice that everything worked when you can see the dev container name on the bottom left and the change of the VS Code color theme to September Steel.
 
+1. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
 ## Repo Structure
 
 Although the Docker and Dev container structure could be more minimal, this repo aims to have the files ready that you might enhance in the future:
