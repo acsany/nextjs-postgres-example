@@ -12,7 +12,7 @@ services:
       - PGUSER=${PGUSER}
       - PGPASSWORD=${PGPASSWORD}
       - PGDATABASE=${PGDATABASE}
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=${POSTGRES_URL}
     networks:
       - my-network
 
