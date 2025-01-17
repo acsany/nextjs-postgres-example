@@ -6,11 +6,24 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
         "perragnaredin.september-steel",
         "sleistner.vscode-fileutils"
       ],
       "settings": {
-        "workbench.colorTheme": "September Steel"
+        "workbench.colorTheme": "September Steel",
+        "sqltools.connections": [
+          {
+            "name": "Development DB",
+            "driver": "PostgreSQL",
+            "server": "${localEnv:PGHOST}",
+            "port": 5432,
+            "database": "${localEnv:PGDATABASE}",
+            "username": "${localEnv:PGUSER}",
+            "password": "${localEnv:PGPASSWORD}"
+          }
+        ]
       }
     }
   },

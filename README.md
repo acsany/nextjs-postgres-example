@@ -12,6 +12,12 @@ This repo is the basis for Next.js projects that connect to a Postgres database 
 
 ## Getting Started
 
+1. Copy the environment file:
+
+   ```bash
+   $ cp .env.example .env
+   ```
+
 1. Open the project in VS Code
 1. When prompted, click "Reopen in Container". This will:
 
@@ -38,3 +44,4 @@ Although the Docker and Dev container structure could be more minimal, this repo
 ## TODO
 
 - [ ] Add relevant VS Code extensions 
+- [ ] Research how to prevent adding environment variables in `.env` for the database connection AND the `DATABASE_URL` -- ideally I don't want to change information on e.g. `PGUSER` and `DATABASE_URL` -- ideally, the `DATABASE_URL` gets constructed by the other variables
