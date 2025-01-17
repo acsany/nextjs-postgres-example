@@ -1,0 +1,9 @@
+services:
+  dev:
+    build:
+      context: ./.devcontainer
+      dockerfile: Dockerfile
+    entrypoint: /bin/bash
+    command: -i -c "while :; do sleep 10; done"
+    volumes:
+      - .:/workspace:cached

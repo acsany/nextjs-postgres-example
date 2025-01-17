@@ -1,0 +1,17 @@
+{
+  "name": "node-base-dev",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "perragnaredin.september-steel"
+      ],
+      "settings": {
+        "workbench.colorTheme": "September Steel"
+        ]
+      }
+    }
+  }
+}
