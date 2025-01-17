@@ -27,10 +27,18 @@ This repo is the basis for Next.js projects that connect to a Postgres database 
 
 You can notice that everything worked when you can see the dev container name on the bottom left and the change of the VS Code color theme to September Steel.
 
-1. Run the development server:
+## Working with Next.js and Drizzle
+
+- Run the development server:
 
    ```bash
    npm run dev
+   ```
+
+- Apply changes to the database:
+
+   ```bash
+   npx drizzle-kit push
    ```
 
 ## Repo Structure
