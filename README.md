@@ -29,18 +29,18 @@ You can notice that everything worked when you can see the dev container name on
 
 ## Working with Next.js and Drizzle
 
-- Run the development server:
-
-   ```bash
-   npm run dev
-   ```
-
 - Apply changes to the database:
 
    ```bash
    npx drizzle-kit push
    ```
 
+- Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+   
 ## Repo Structure
 
 Although the Docker and Dev container structure could be more minimal, this repo aims to have the files ready that you might enhance in the future:
@@ -48,6 +48,17 @@ Although the Docker and Dev container structure could be more minimal, this repo
 1. `docker-compose.yml`: Contains the instructions to automate the creation of Docker images, the environment and application dependencies for a container.
 1. `.devontainer/devcontainer.json`: Describes the settings, extensions, and environment for a development container in your code editor.
 1. `.devontainer/Dockerfile`: Defines the steps required to build the Docker image, specifying the base image, environment variables, dependencies, commands, and configurations.
+
+## Create Database in Vercel
+
+When the project is hosted on Vercel.com you have to create a postgres Database to recieve the environment variables.
+
+- Go to your Vercel-Dashboard and open your project
+- Go to Storage
+- Click on `Create` at <strong>Neon Serverless Postgre</strong>
+- Choose `Region` and `Free Plan` and create the Database
+
+Now you have access to all necassary environment variables
 
 ## TODO
 
