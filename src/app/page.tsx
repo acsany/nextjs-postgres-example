@@ -7,7 +7,7 @@ import { text } from 'drizzle-orm/mysql-core';
 
 interface Message {
   id: number;
-  test: string;
+  text: string;
 }
 
 export default function Home() {
