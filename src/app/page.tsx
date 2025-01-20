@@ -2,104 +2,65 @@
 import { useState, useEffect } from 'react';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
-import { usersTable } from '@/db/schema';
+import { messageTable } from '@/db/schema';
+import { text } from 'drizzle-orm/mysql-core';
 
-interface User {
+interface Message {
   id: number;
-  name: string;
-  age: number;
-  email: string;
+  test: string;
 }
 
 export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [formData, setFormData] = useState({
-    name: '',
-    age: '',
-    email: '',
+    text: '',
   });
 
-  const fetchUsers = async () => {
-    const response = await fetch('/api/users');
+  const fetchMessages = async () => {
+    const response = await fetch('/api/messages');
     const data = await response.json();
-    setUsers(data);
+    setMessages(data);
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchMessages();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: formData.name,
-          age: parseInt(formData.age),
-          email: formData.email,
+          text: formData.text
         }),
       });
 
       if (response.ok) {
-        setFormData({ name: '', age: '', email: '' });
-        fetchUsers();
+        setFormData({ text: '' });
+        fetchMessages();
       }
     } catch (error) {
-      console.error('Error creating user:', error);
-    }
-  };
-
-  const handleDelete = async (email: string) => {
-    try {
-      const response = await fetch(`/api/users?email=${email}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        fetchUsers();
-      }
-    } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error('Error creating message:', error);
     }
   };
 
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6">User Management</h1>
+        <h1 className="text-2xl font-bold mb-6">Enter Message</h1>
         
         <form onSubmit={handleSubmit} className="mb-8 space-y-4">
           <div>
-            <label className="block mb-1">Name:</label>
+            <label className="block mb-1">Text:</label>
             <input
               type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full p-2 border rounded text-black"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1">Age:</label>
-            <input
-              type="number"
-              value={formData.age}
-              onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-              className="w-full p-2 border rounded text-black"
-              required
-            />
-          </div>
-          <div>
-            <label className="block mb-1">Email:</label>
-            <input
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              value={formData.text}
+              onChange={(e) => setFormData({ ...formData, text: e.target.value })}
               className="w-full p-2 border rounded text-black"
               required
             />
@@ -108,28 +69,20 @@ export default function Home() {
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
-            Add User
+            Add Message
           </button>
         </form>
 
         <div className="space-y-4">
-          <h2 className="text-xl font-bold">Users</h2>
-          {users.map((user) => (
+          <h2 className="text-xl font-bold">Messages</h2>
+          {messages.map((message) => (
             <div
-              key={user.id}
+              key={message.id}
               className="border p-4 rounded flex justify-between items-center"
             >
               <div>
-                <p className="font-bold">{user.name}</p>
-                <p className="text-sm">Age: {user.age}</p>
-                <p className="text-sm">{user.email}</p>
+                <p className="font-bold">{message.text}</p>
               </div>
-              <button
-                onClick={() => handleDelete(user.email)}
-                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-              >
-                Delete
-              </button>
             </div>
           ))}
         </div>
